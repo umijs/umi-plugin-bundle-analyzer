@@ -82,7 +82,7 @@ class BundleAnalyzerPlugin {
   }
 
   async generateReportFile(stats) {
-    const bundleDir = this.opts.reportDir || this.getBundleDirFromCompiler();
+    const bundleDir = this.opts && this.opts.reportDir || this.getBundleDirFromCompiler();
     const statsFilepath = path.resolve(bundleDir, this.opts.statsFilename);
     mkdir.sync(path.dirname(statsFilepath));
 
@@ -165,16 +165,7 @@ class BundleAnalyzerPlugin {
   }
 
   getBundleDirFromCompiler() {
-    switch (this.compiler.outputFileSystem.constructor.name) {
-      case 'MemoryFileSystem':
-        return null;
-      // Detect AsyncMFS used by Nuxt 2.5 that replaces webpack's MFS during development
-      // Related: #274
-      case 'AsyncMFS':
-        return null;
-      default:
-        return this.compiler.outputPath;
-    }
+    return (this.compiler.outputFileSystem.constructor.name === 'MemoryFileSystem') ? null : this.compiler.outputPath;
   }
 
 }
