@@ -16,7 +16,7 @@ describe('Analyzer', function () {
 
   beforeEach(async function () {
     this.timeout(15000);
-    await nightmare.goto('about:blank');
+    return await nightmare.goto('about:blank');
   });
 
   afterEach(function () {

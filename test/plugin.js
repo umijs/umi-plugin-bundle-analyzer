@@ -15,7 +15,7 @@ describe('Plugin', function () {
 
   beforeEach(async function () {
     this.timeout(10000);
-    await nightmare.goto('about:blank');
+    return await nightmare.goto('about:blank');
   });
 
   afterEach(function () {
