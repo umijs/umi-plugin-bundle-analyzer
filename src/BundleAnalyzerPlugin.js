@@ -82,7 +82,7 @@ class BundleAnalyzerPlugin {
   }
 
   async generateReportFile(stats) {
-    const bundleDir = this.opts && this.opts.reportDir || this.getBundleDirFromCompiler();
+    const bundleDir = this.opts ? this.opts.reportDir : this.getBundleDirFromCompiler();
     const statsFilepath = path.resolve(bundleDir, this.opts.statsFilename);
     mkdir.sync(path.dirname(statsFilepath));
 
