@@ -99,7 +99,7 @@ describe('Plugin', function () {
 
         await webpackCompile(config);
         await expectValidBundleReport(config, bundleDir);
-        del.sync(bundleDir);
+        await del(bundleDir);
       });
 
       it('should shaking node_modules', async function () {
