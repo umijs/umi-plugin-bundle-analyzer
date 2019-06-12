@@ -41,7 +41,7 @@ class BundleAnalyzerPlugin {
       const actions = [];
 
       if (this.opts.generateReportFile) {
-        actions.push(() => this.generateReportFile(stats));
+        actions.push(() => this.generateReportFile(stats, this.opts.reportDepth));
       }
 
       if (this.opts.generateStatsFile) {
@@ -82,8 +82,7 @@ class BundleAnalyzerPlugin {
   }
 
   async generateReportFile(stats) {
-    const bundleDir = this.opts.reportDir || this.getBundleDirFromCompiler();
-    const statsFilepath = path.resolve(bundleDir, this.opts.statsFilename);
+    const statsFilepath = path.resolve(this.compiler.outputPath, this.opts.statsFilename);
     mkdir.sync(path.dirname(statsFilepath));
 
     try {
@@ -96,7 +95,7 @@ class BundleAnalyzerPlugin {
       });
 
       await bfj.write(statsFilepath, chartData, {
-        space: null,
+        space: 2,
         promises: 'ignore',
         buffers: 'ignore',
         maps: 'ignore',
