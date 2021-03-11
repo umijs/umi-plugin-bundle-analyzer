@@ -179,7 +179,7 @@ It happens when `umi-webpack-bundle-analyzer` analyzes files that don't actually
 Couldn't parse bundle asset "your_bundle_name.bundle.js".
 Analyzer will use module sizes from stats file.
 ```
-To get more information about it you can read [issue #147](https://github.com/webpack-contrib/webpack-bundle-analyzer/issues/147).
+To get more information about it you can read [issue #147](https://github.com/webpack-contrib/umi-webpack-bundle-analyzer/issues/147).
 
 <h2 align="center">Other tools</h2>
 
